@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Distorm by gdabah</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Distorm</h1>
+        <p>Automatically exported from code.google.com/p/distorm</p>
+        <p class="view"><a href="https://github.com/gdabah/distorm">View the Project on GitHub <small>gdabah/distorm</small></a></p>
+        <ul>
+          <li><a href="https://github.com/gdabah/distorm/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gdabah/distorm/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gdabah/distorm">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Welcome to the diStorm3 binary stream disassembler library project!</p>
+
+<p><i>No more parsing strings! - diStorm3 is really a decomposer, which means it takes an instruction and returns a binary structure which describes it rather than static text, this is great for advanced binary code analysis.</i></p>
+
+<p>==diStorm3.3 is now available for <i>commercial</i> use [<a href="http://ragestorm.net/distorm/">http://ragestorm.net/distorm/</a> here].==</p>
+
+<p>"We benchmarked five popular open-source disassembly libraries and chose diStorm3, which had the best performance (and furthermore, has complete 64-bit support).", July 2014, Quoting David Williams-King in his Thesis about Binary Shuffling.</p>
+
+<p>===Downloads===
+FULL source code with tools and examples, can be downloaded from:
+[<a href="http://ragestorm.net/distorm/distorm3.3-package.zip">http://ragestorm.net/distorm/distorm3.3-package.zip</a>]
+MD5:49CE1543E7FD305367107A61D05EEC32</p>
+
+<p>===News===</p>
+
+<p><em>Jan 3rd 2015:</em></p>
+
+<p>Finally, lots of new updates!
+  # We support PyPI! Check it out at [<a href="https://pypi.python.org/pypi/distorm3">https://pypi.python.org/pypi/distorm3</a>] You can now use: (python -m) pip install distorm3. Also supports Python 2.x and 3.x!
+  # Some bugs and few instructions were fixed (thanks for submitting guys!)
+  # Added a new macro to check if an instruction is privileged (FLAG_GET_PRIVILEGED)
+  # Added new fields to instruction structure - CPU flags affected. They are compatible with EFLAGS, and let you see modified/tested/undefined flags! In addition, the usedRegistersMask is also updated to support all X64 registers (thanks to JonD).
+  # diStorm for C# is now part of diStorm's package, thanks to Dan Shechter. See <a href="https://code.google.com/p/distorm/wiki/diStormNet">https://code.google.com/p/distorm/wiki/diStormNet</a> for some help.</p>
+
+<p><em>Nov 22nd 2012:</em></p>
+
+<p>Ruby Binding (frasm) was updated to support diStorm3.3 by Ron Peleg. <a href="https://github.com/rpeleg1970/frasm">https://github.com/rpeleg1970/frasm</a></p>
+
+<p><em>Sep 30th 2012:</em></p>
+
+<p>Fixed a text formatting problem with the MOVZX instruction, thanks to Jun Koi for reporting.</p>
+
+<p><em>Sep 20th 2012:</em></p>
+
+<p>Finally I got to fix the problem with the Python binding. I also had to fix a few other problems. I am testing everything and will upload a new version by tomorrow. Thanks for your patience. </p>
+
+<p><em>Jul 29th 2012:</em></p>
+
+<p>diStorm version 3.3 is now released.
+The structure of a decoded instruction now contains new fields that let one know how the instruction affected the CPU flags (modified, tested, undefined). For more info see the last three fields of the DInst structure inside [DecomposeInterface].</p>
+
+<p>Compacted the DB of instructions much more, with another level of shared data among similar instructions...</p>
+
+<p>The Python bindings now support the control flow features that diStorm3 itself support, thanks to Vext01.</p>
+
+<p><em>Apr 9th 2012:</em></p>
+
+<p>A major release of diStorm3.2 is now available.
+Fixed many instructions, either operand accuracy problems or typos in mnemonics. Fixed a few bugs introduced in July 2011. Added new instructions such as: INVPCID, TZCNT, RDxSBASE, WRxSBASE, CVTPS2PH, CVTPH2PS and more.
+Added a new compiler directive DISTORM_LIGHT to compile only distorm_decompose (no text formatting) to make diStorm smaller in size (should save around 20kb), thanks to Marius Negrutiu of BullGuard. 
+Fixed the Java wrapper to support latest version.</p>
+
+<p>===Features===</p>
+
+<p>diStorm is a lightweight, easy-to-use and <em>fast</em> decomposer library.</p>
+
+<p>diStorm disassembles instructions in 16, 32 and 64 bit modes.
+Supported instruction sets: FPU, MMX, SSE, SSE2, SSE3, SSSE3, SSE4, 3DNow! (w/ extensions), new x86-64 instruction sets, VMX, AMD's SVM and AVX!</p>
+
+<p>The output of new interface of diStorm is a special <em>structure</em> that can describe any x86 instruction, this structure can be later formatted into text for display too.</p>
+
+<p>diStorm is written in C, but for rapidly use, diStorm also has wrappers in Python/Ruby/Java and can easily be used in C as well. It is also the fastest disassembler library!</p>
+
+<p>The source code is very clean, readable, portable and platform independent (supports both little and big endianity).
+diStorm solely depends on the C library, therefore it can be used in embedded or kernel modules.</p>
+
+<p>Note that diStorm3 is backward compatible with the interface of diStorm64 (however, make sure you use the newest header files).</p>
+
+<p>If you have more ideas, please let me know!</p>
+
+<p>===Documentation===
+Please <em>read</em> the documentation before asking questions, everything you need is pretty much here!
+Don't forget that diStorm is open source and you can always take a look to understand how to do one thing or another, but don't do it before you really have to.</p>
+
+<p>For using diStorm in C refer to the [CSample] and it's very important to understand the API too, [SimpleInterface]. However, if you want to use diStorm in Python refer to the [Python] example.</p>
+
+<p>Since diStorm3 has a new interface you can learn more about it, starting with the [Showcases] to get some idea what to expect from using the decompose functionality. Then you better see how the [Structure_Layout] is and once you get a clue, continue to the <em>must read</em> [DecomposeInterface].</p>
+
+<p>If you feel it's enough for you and you want to jump into the water and start coding, here are a few [TipsnTricks Tips&amp;Tricks] that are going to make your life easier while using diStorm.</p>
+
+<p>For advanced users who wish to use diStorm for real flow control analysis, this is your guide: [Flow_Control_Support].</p>
+
+<p>As always, since diStorm is a stream disassembler there are some pitfalls that you may encounter, therefore this page [StreamDisassembler] might give you some ideas of good practices.</p>
+
+<p>If you wish to compile/build diStorm on your own, on whatever platform, refer to [Build_Compilation_Environment].</p>
+
+<p>For learning a bit about x86/x64 machine code, see [x86_x64_Machine_Code]. And if you want to get a depth knowledge of how the internals of diStorm work, refer to [diStorm_Internals], though it's not up to date with diStorm3, it should give you a good idea how to start hacking your way around.</p>
+
+<p>===About===
+Gil Dabah started this project from scratch in June 2003 for his own fun in his free time. Until today he is still the only guy behind this project. Gil also runs a blog at: <a href="http://ragestorm.net/blogs/">http://ragestorm.net/blogs/</a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/gdabah">gdabah</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37206555-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
